@@ -4,69 +4,134 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public final class ImmutableArrayList implements ImmutableList {
+    private Object[] elements;
+
     public ImmutableArrayList(Object[] elements) {
+        this.elements = new Object[elements.length];
+        for (int i = 0; i < elements.length; i++) {
+            this.elements[i] = elements[i];
+        }
     }
 
     public ImmutableArrayList() {
+        this.elements = new Object[0];
     }
 
     @Override
     public ImmutableList add(Object e) {
-        return null;
+        Object[] newArr = new Object[this.elements.length + 1];
+        for (int i = 0; i < this.elements.length; i++) {
+            newArr[i] = this.elements[i];
+        }
+        newArr[this.elements.length] = e;
+        return new ImmutableArrayList(newArr);
     }
 
     @Override
     public ImmutableList add(int index, Object e) {
-        return null;
+        Object[] newArr = new Object[this.elements.length + 1];
+        for (int i = 0; i < index; i++) {
+            newArr[i] = this.elements[i];
+        }
+        newArr[index] = e;
+        for (int i = index + 1; i < newArr.length; i++) {
+            newArr[i] = this.elements[i - 1];
+        }
+        return new ImmutableArrayList(newArr);
     }
 
     @Override
     public ImmutableList addAll(Object[] c) {
-        return null;
+        Object newArr[] = new Object[c.length + this.elements.length];
+        for (int i = 0; i < this.elements.length; i++) {
+            newArr[i] = this.elements[i];
+        }
+        for (int i = 0; i < c.length; i++) {
+            newArr[i + this.elements.length] = c[i];
+        }
+        return new ImmutableArrayList(newArr);
     }
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
-        return null;
+        Object[] newArr = new Object[c.length + this.elements.length];
+        for (int i = 0; i < index; i++) {
+            newArr[i] = this.elements[i];
+        }
+        for (int i = 0; i < c.length; i++) {
+            newArr[i + index] = c[i];
+        }
+        for (int i = 0; i < newArr.length - index; i++) {
+            newArr[i + index + c.length] = c[i];
+        }
+        return new ImmutableArrayList(newArr);
     }
 
     @Override
     public Object get(int index) {
-        return null;
+        return this.elements[index];
     }
 
     @Override
     public ImmutableList remove(int index) {
-        return null;
+        Object[] newArr = new Object[this.elements.length - 1];
+        for (int i = 0; i < index; i++) {
+            newArr[i] = this.elements[i];
+        }
+        for (int i = 0; i < this.elements.length - index; i++) {
+            newArr[i + index] = this.elements[i + index + 1];
+        }
+        return new ImmutableArrayList(newArr);
     }
+
 
     @Override
     public ImmutableList set(int index, Object e) {
-        return null;
+        Object[] newArr = new Object[this.elements.length];
+        for (int i = 0; i < this.elements.length; i++) {
+            newArr[i] = this.elements[i];
+        }
+        newArr[index] = e;
+        return new ImmutableArrayList(newArr);
     }
 
     @Override
     public int indexOf(Object e) {
-        return 0;
+        int index = -1;
+        for (int i = 0; i < this.elements.length; i++) {
+            if (this.elements[i] == e) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     @Override
     public int size() {
-        return 0;
+        return this.elements.length;
     }
 
     @Override
     public ImmutableList clear() {
-        return null;
+        return new ImmutableArrayList();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        if (this.elements.length > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] newArr = new Object[this.elements.length];
+        for (int i = 0; i<this.elements.length; i++){
+            newArr[i] = this.elements[i];
+        }
+        return newArr;
     }
 }
