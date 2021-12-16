@@ -15,6 +15,12 @@ public class QueueTest {
     }
 
     @Test
+    public void empty(){
+        Queue queue = new Queue();
+        assertEquals(null, queue.dequeue());
+    }
+
+    @Test
     public void dequeue() {
         Queue queue = new Queue();
         queue.enqueue(1);

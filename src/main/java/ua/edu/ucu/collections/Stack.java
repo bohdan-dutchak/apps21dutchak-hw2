@@ -6,24 +6,21 @@ import ua.edu.ucu.collections.immutable.Node;
 public class Stack {
     private ImmutableLinkedList stack;
 
-    public Stack(){
+    public Stack() {
         this.stack = new ImmutableLinkedList();
     }
-    public Stack(ImmutableLinkedList stack){
-        this.stack = stack;
-    }
+
 
     public void push(Object e) {
         this.stack = this.stack.addLast(e);
     }
 
     public Object pop() {
-        if (this.stack.size()!=0) {
+        if (this.stack.size() != 0) {
             Node temp = this.stack.getTail();
             this.stack = this.stack.removeLast();
             return temp.getValue();
-        }
-        else{
+        } else {
             return new Node();
         }
     }

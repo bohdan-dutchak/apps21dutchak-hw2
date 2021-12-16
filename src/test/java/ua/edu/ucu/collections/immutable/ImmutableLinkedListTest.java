@@ -116,6 +116,11 @@ public class ImmutableLinkedListTest extends TestCase {
         assertEquals(true, list.isEmpty());
     }
 
+    public void testIsNotEmpty() {
+        ImmutableList list = new ImmutableLinkedList(new Object[]{1,2,3,4,5,5,1});
+        assertEquals(false, list.isEmpty());
+    }
+
     public void testToArray() {
         Object[] els = new Object[]{1,2,3,4,5};
         ImmutableList list = new ImmutableLinkedList(els);

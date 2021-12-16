@@ -1,7 +1,5 @@
 package ua.edu.ucu.collections.immutable;
 
-import java.util.Arrays;
-import java.util.Objects;
 
 public final class ImmutableArrayList implements ImmutableList {
     private Object[] elements;
@@ -42,7 +40,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList addAll(Object[] c) {
-        Object newArr[] = new Object[c.length + this.elements.length];
+        Object[] newArr = new Object[c.length + this.elements.length];
         for (int i = 0; i < this.elements.length; i++) {
             newArr[i] = this.elements[i];
         }
@@ -62,7 +60,7 @@ public final class ImmutableArrayList implements ImmutableList {
             newArr[i + index] = c[i];
         }
         for (int i = 0; i < newArr.length - index - c.length; i++) {
-            newArr[i + index + c.length] = this.elements[i+index];
+            newArr[i + index + c.length] = this.elements[i + index];
         }
         return new ImmutableArrayList(newArr);
     }
@@ -79,7 +77,7 @@ public final class ImmutableArrayList implements ImmutableList {
             newArr[i] = this.elements[i];
         }
         for (int i = 0; i < this.elements.length - index; i++) {
-            newArr[i + index -1] = this.elements[i + index];
+            newArr[i + index - 1] = this.elements[i + index];
         }
         return new ImmutableArrayList(newArr);
     }
@@ -118,18 +116,13 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        if (this.elements.length > 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return this.size() == 1 && this.get(0) == null;
     }
 
     @Override
     public Object[] toArray() {
         Object[] newArr = new Object[this.elements.length];
-        for (int i = 0; i<this.elements.length; i++){
+        for (int i = 0; i < this.elements.length; i++) {
             newArr[i] = this.elements[i];
         }
         return newArr;

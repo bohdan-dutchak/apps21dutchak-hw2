@@ -110,6 +110,11 @@ public class ImmutableArrayListTest extends TestCase {
         assertEquals(false, list.isEmpty());
     }
 
+    public void testIsNotEmpty() {
+        ImmutableList list = new ImmutableArrayList(new Object[]{1,2,3,4,5,5,1});
+        assertEquals(false, list.isEmpty());
+    }
+
     @Test
     public void testToArray() {
         ImmutableList list;

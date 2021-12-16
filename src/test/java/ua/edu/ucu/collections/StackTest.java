@@ -22,6 +22,12 @@ public class StackTest {
     }
 
     @Test
+    public void empty(){
+        Stack stack = new Stack();
+        assertEquals(null, stack.pop());
+    }
+
+    @Test
     public void peek() {
         Stack stack = new Stack();
         stack.push(1);

@@ -7,33 +7,29 @@ import ua.edu.ucu.collections.immutable.Node;
 public class Queue {
     private ImmutableList queue;
 
-    public Queue(){
+    public Queue() {
         this.queue = new ImmutableLinkedList();
     }
-    public Queue(ImmutableLinkedList queue){
-        this.queue = queue;
-    }
+
 
     public Object peek() {
         return this.queue.get(0);
     }
 
     public Object dequeue() {
-        if (this.queue.size()!=0) {
+        if (this.queue.size() != 0) {
             Object temp = this.queue.get(0);
             this.queue = this.queue.remove(0);
             return temp;
-        }
-        else{
+        } else {
             return new Node();
         }
     }
 
     public void enqueue(Object e) {
-        if (this.queue.size() == 1){
+        if (this.queue.size() == 1) {
             this.queue = this.queue.add(e);
-        }
-        else {
+        } else {
             this.queue = this.queue.add(e);
         }
     }

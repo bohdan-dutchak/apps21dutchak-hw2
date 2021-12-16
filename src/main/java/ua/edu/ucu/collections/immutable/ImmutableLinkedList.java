@@ -1,6 +1,5 @@
 package ua.edu.ucu.collections.immutable;
 
-import java.util.PriorityQueue;
 
 public final class ImmutableLinkedList implements ImmutableList {
     private Node head;
@@ -37,10 +36,9 @@ public final class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableList add(Object e) {
         Object[] result;
-        if(this.get(0) == null){
+        if (this.get(0) == null) {
             result = new Object[this.size()];
-        }
-        else {
+        } else {
             result = new Object[this.size() + 1];
         }
         Object[] arr = this.toArray();
@@ -59,8 +57,8 @@ public final class ImmutableLinkedList implements ImmutableList {
             result[i] = arr[i];
         }
         result[index] = e;
-        for (int i = index + 1; i < result.length; i++){
-            result[i] = arr[i-1];
+        for (int i = index + 1; i < result.length; i++) {
+            result[i] = arr[i - 1];
         }
         return new ImmutableLinkedList(result);
     }
@@ -72,8 +70,8 @@ public final class ImmutableLinkedList implements ImmutableList {
         for (int i = 0; i < arr.length; i++) {
             result[i] = arr[i];
         }
-        for (int i = 0; i < c.length; i++){
-            result[i+arr.length] = c[i];
+        for (int i = 0; i < c.length; i++) {
+            result[i + arr.length] = c[i];
         }
         return new ImmutableLinkedList(result);
     }
@@ -86,10 +84,10 @@ public final class ImmutableLinkedList implements ImmutableList {
             result[i] = arr[i];
         }
         for (int i = 0; i < c.length; i++) {
-            result[i+index] = c[i];
+            result[i + index] = c[i];
         }
         for (int i = index; i < arr.length; i++) {
-            result[i+c.length] = arr[i];
+            result[i + c.length] = arr[i];
         }
         return new ImmutableLinkedList(result);
     }
@@ -102,12 +100,12 @@ public final class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableList remove(int index) {
         Object[] arr = this.toArray();
-        Object[] removed = new Object[arr.length-1];
-        for(int i = 0; i<index; i++){
+        Object[] removed = new Object[arr.length - 1];
+        for (int i = 0; i < index; i++) {
             removed[i] = arr[i];
         }
-        for(int i = index+1; i<arr.length; i++){
-            removed[i-1] = arr[i];
+        for (int i = index + 1; i < arr.length; i++) {
+            removed[i - 1] = arr[i];
         }
         return new ImmutableLinkedList(removed);
     }
@@ -116,15 +114,15 @@ public final class ImmutableLinkedList implements ImmutableList {
     public ImmutableList set(int index, Object e) {
         Object[] result = this.toArray();
         result[index] = e;
-        return  new ImmutableLinkedList(result);
+        return new ImmutableLinkedList(result);
     }
 
     @Override
     public int indexOf(Object e) {
         int index = -1;
         Object[] arr = this.toArray();
-        for (int i = 0; i<arr.length; i++){
-            if(arr[i] == e){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == e) {
                 return i;
             }
         }
@@ -149,12 +147,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        if(this.size() == 1 && this.get(0)==null){
-            return true;
-        }
-        else{
-            return  false;
-        }
+        return this.size() == 1 && this.get(0) == null;
     }
 
     @Override
@@ -172,33 +165,31 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList addFirst(Object e) {
         Object[] result;
-        if(this.get(0) == null){
+        if (this.get(0) == null) {
             result = new Object[this.size()];
-        }
-        else {
+        } else {
             result = new Object[this.size() + 1];
         }
         Object[] arr = this.toArray();
         result[0] = e;
-        for (int i =0; i< arr.length; i++){
-            result[i+1] = arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            result[i + 1] = arr[i];
         }
         return new ImmutableLinkedList(result);
     }
 
     public ImmutableLinkedList addLast(Object e) {
         Object[] result;
-        if(this.get(0) == null){
+        if (this.get(0) == null) {
             result = new Object[this.size()];
-        }
-        else {
+        } else {
             result = new Object[this.size() + 1];
         }
         Object[] arr = this.toArray();
-        for (int i =0; i< arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             result[i] = arr[i];
         }
-        result[result.length-1] = e;
+        result[result.length - 1] = e;
         return new ImmutableLinkedList(result);
     }
 
@@ -220,19 +211,19 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList removeFirst() {
         Object[] arr = this.toArray();
-        Object[] removed = new Object[arr.length-1];
-        for (int i = 0; i<removed.length; i++){
-            removed[i] = arr[i+1];
+        Object[] removed = new Object[arr.length - 1];
+        for (int i = 0; i < removed.length; i++) {
+            removed[i] = arr[i + 1];
         }
-        return  new ImmutableLinkedList(removed);
+        return new ImmutableLinkedList(removed);
     }
 
     public ImmutableLinkedList removeLast() {
         Object[] arr = this.toArray();
-        Object[] removed = new Object[arr.length-1];
-        for (int i = 0; i<removed.length; i++){
+        Object[] removed = new Object[arr.length - 1];
+        for (int i = 0; i < removed.length; i++) {
             removed[i] = arr[i];
         }
-        return  new ImmutableLinkedList(removed);
+        return new ImmutableLinkedList(removed);
     }
 }
