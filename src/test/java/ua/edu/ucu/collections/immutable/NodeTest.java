@@ -7,7 +7,7 @@ import org.junit.Test;
 public class NodeTest extends TestCase {
     private Node node;
     @Before
-    public void setup(){
+    public void setUp(){
         this.node = new Node();
     }
 

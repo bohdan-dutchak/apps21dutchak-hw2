@@ -6,18 +6,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StackTest {
-    private Stack stack;
-
-    @Before
-    public void setUp() {
-        stack = new Stack();
-        for (int i : new int[]{1, 2, 3, 4, 5}) {
-            stack.push(i);
-        }
-    }
-
     @Test
     public void pop() {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
         assertEquals(5, stack.pop());
         assertEquals(4, stack.pop());
         assertEquals(3, stack.pop());
@@ -27,6 +23,19 @@ public class StackTest {
 
     @Test
     public void peek() {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
         assertEquals(5, stack.peek());
+    }
+
+    @Test
+    public void push(){
+        Stack stack = new Stack();
+        stack.push(1);
+        assertEquals(1, stack.peek());
     }
 }

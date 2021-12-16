@@ -14,7 +14,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList() {
-        this.elements = new Object[0];
+        this.elements = new Object[]{};
     }
 
     @Override
@@ -61,8 +61,8 @@ public final class ImmutableArrayList implements ImmutableList {
         for (int i = 0; i < c.length; i++) {
             newArr[i + index] = c[i];
         }
-        for (int i = 0; i < newArr.length - index; i++) {
-            newArr[i + index + c.length] = c[i];
+        for (int i = 0; i < newArr.length - index - c.length; i++) {
+            newArr[i + index + c.length] = this.elements[i+index];
         }
         return new ImmutableArrayList(newArr);
     }
@@ -79,7 +79,7 @@ public final class ImmutableArrayList implements ImmutableList {
             newArr[i] = this.elements[i];
         }
         for (int i = 0; i < this.elements.length - index; i++) {
-            newArr[i + index] = this.elements[i + index + 1];
+            newArr[i + index -1] = this.elements[i + index];
         }
         return new ImmutableArrayList(newArr);
     }
@@ -119,10 +119,10 @@ public final class ImmutableArrayList implements ImmutableList {
     @Override
     public boolean isEmpty() {
         if (this.elements.length > 0){
-            return true;
+            return false;
         }
         else{
-            return false;
+            return true;
         }
     }
 

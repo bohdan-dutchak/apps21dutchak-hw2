@@ -14,14 +14,14 @@ public class Stack {
     }
 
     public void push(Object e) {
-        this.stack = this.stack.addFirst(e);
+        this.stack = this.stack.addLast(e);
     }
 
     public Object pop() {
         if (this.stack.size()!=0) {
             Node temp = this.stack.getTail();
             this.stack = this.stack.removeLast();
-            return temp;
+            return temp.getValue();
         }
         else{
             return new Node();
@@ -29,6 +29,6 @@ public class Stack {
     }
 
     public Object peek() {
-        return this.stack.getTail();
+        return this.stack.getTail().getValue();
     }
 }
