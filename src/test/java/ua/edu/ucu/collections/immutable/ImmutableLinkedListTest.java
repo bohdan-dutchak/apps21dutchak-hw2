@@ -32,10 +32,27 @@ public class ImmutableLinkedListTest extends TestCase {
         }
     }
 
+    @Test
+    public void testAddEmpty() {
+        ImmutableList list = new ImmutableLinkedList();
+        list = list.add(6);
+        assertEquals(6, list.get(0));
+    }
+
     public void testTestAdd() {
         Object[] els = new Object[]{1,2,4,5};
         ImmutableList list = new ImmutableLinkedList(els);
         list = list.add(2,3);
+        Object[] listarr = list.toArray();
+        for (int i = 0; i<list.size(); i++){
+            assertEquals(i+1, listarr[i]);
+        }
+    }
+
+    public void testTestAdd1() {
+        Object[] els = new Object[]{1,2,3,4,5,6,7,9,10,11};
+        ImmutableList list = new ImmutableLinkedList(els);
+        list = list.add(7,8);
         Object[] listarr = list.toArray();
         for (int i = 0; i<list.size(); i++){
             assertEquals(i+1, listarr[i]);
@@ -137,6 +154,12 @@ public class ImmutableLinkedListTest extends TestCase {
         for (int i = 0; i<els.length+1; i++){
             assertEquals(i+1, list.get(i));
         }
+    }
+
+    public void a(){
+        ImmutableLinkedList list = new ImmutableLinkedList();
+        list = list.addFirst(1);
+        assertEquals(1,list.getFirst());
     }
 
     public void testAddLast() {

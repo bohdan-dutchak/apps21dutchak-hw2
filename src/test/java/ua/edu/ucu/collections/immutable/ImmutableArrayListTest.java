@@ -18,12 +18,29 @@ public class ImmutableArrayListTest extends TestCase {
     }
 
     @Test
+    public void testAddEmpty() {
+        ImmutableList list = new ImmutableArrayList();
+        list = list.add(6);
+        assertEquals(6, list.get(0));
+    }
+
+    @Test
     public void testTestAdd() {
         ImmutableList list;
         Object[] els = new Object[]{1,2,3,4,5};
         list = new ImmutableArrayList(els);
         list = list.add(0,0);
         assertEquals(5, list.get(5));
+    }
+
+    public void testTestAdd1() {
+        Object[] els = new Object[]{1,2,3,4,5,6,7,9,10,11};
+        ImmutableList list = new ImmutableArrayList(els);
+        list = list.add(7,8);
+        Object[] listarr = list.toArray();
+        for (int i = 0; i<list.size(); i++){
+            assertEquals(i+1, listarr[i]);
+        }
     }
 
     @Test
