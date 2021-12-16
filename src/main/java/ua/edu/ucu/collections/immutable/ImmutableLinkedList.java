@@ -147,7 +147,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        return this.size() == 1 && this.get(0) == null;
+        return this.get(0) == null;
     }
 
     @Override

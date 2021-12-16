@@ -17,13 +17,9 @@ public class Queue {
     }
 
     public Object dequeue() {
-        if (this.queue.size() != 0) {
-            Object temp = this.queue.get(0);
-            this.queue = this.queue.remove(0);
-            return temp;
-        } else {
-            return new Node();
-        }
+        Object temp = this.queue.get(0);
+        this.queue = this.queue.remove(0);
+        return temp;
     }
 
     public void enqueue(Object e) {

@@ -16,13 +16,9 @@ public class Stack {
     }
 
     public Object pop() {
-        if (this.stack.size() != 0) {
-            Node temp = this.stack.getTail();
-            this.stack = this.stack.removeLast();
-            return temp.getValue();
-        } else {
-            return new Node();
-        }
+        Node temp = this.stack.getTail();
+        this.stack = this.stack.removeLast();
+        return temp.getValue();
     }
 
     public Object peek() {
