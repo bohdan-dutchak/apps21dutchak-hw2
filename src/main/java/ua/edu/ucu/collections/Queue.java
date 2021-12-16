@@ -23,10 +23,6 @@ public class Queue {
     }
 
     public void enqueue(Object e) {
-        if (this.queue.size() == 1) {
-            this.queue = this.queue.add(e);
-        } else {
-            this.queue = this.queue.add(e);
-        }
+        this.queue = this.queue.add(e);
     }
 }
